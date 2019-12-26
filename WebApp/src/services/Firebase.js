@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -17,6 +18,9 @@ export class Firebase {
     app.initializeApp(config);
 
     this.auth = app.auth();
+    this.db = app.firestore();
+
+    this.firestore = app.firestore
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
   }
@@ -35,4 +39,8 @@ export class Firebase {
     });
 
   onAuthRedirectListener = () => this.auth.getRedirectResult();
+
+  message = uid => this.db.collection('notifications').doc(uid);
+
+  messages = () => this.db.collection('notifications');
 }

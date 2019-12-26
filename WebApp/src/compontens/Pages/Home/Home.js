@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 import { withFirebase } from '../../../services/FirebaseContext';
 import { withAuthorization } from '../../../services/withAuthorization';
 import * as ROUTES from '../../../services/Routes';
+import { Messages } from '../../Messages/Messages'
 
 
 class Home extends React.Component {
@@ -20,6 +21,7 @@ class Home extends React.Component {
         <h1>Home Page</h1>
         <p>The Home Page is accessible by every signed in user.</p>
         <button onClick={this.logout}>Logout</button>
+        <Messages></Messages>
       </div>
     );
   }
